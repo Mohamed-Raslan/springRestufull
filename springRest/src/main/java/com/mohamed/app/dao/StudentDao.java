@@ -78,9 +78,29 @@ public class StudentDao implements StudentDaoDep {
 		// delete object with primary key
 		Query theQuery = currentSession.createQuery("delete from Student where studentId=:studentId");
 		theQuery.setParameter("studentId", studentId);
-	    theQuery.executeUpdate();
+	    Integer result = theQuery.executeUpdate();
+	    if(result<=0)
+			throw new StudentNotFound("ربما حدثت مشكله او ان الطالب غير متواجد");
+
 		return new InstructorResponce(HttpStatus.ACCEPTED.value(), "تم الحذف بنجاح", System.currentTimeMillis());
 
+	}
+
+	@Override
+	public InstructorResponce updateStudent(Integer studentId,Student student) {
+		if(studentId==null)
+			throw new StudentNotFound("يرجي ادخال رقم الكورس لاضافه الطلبه");
+		
+		Session session = sessionFactory.getCurrentSession();
+		Student student1  = session.get(Student.class, studentId);
+		if(student1==null)
+			throw new StudentNotFound("برجاء ادخال الرقم الخاص بالطالب");
+		
+		student1.setStudentName(student.getStudentName());
+		student1.setStudentAge(student.getStudentAge());
+		student1.setStudentYear(student.getStudentYear());
+		session.saveOrUpdate(student1);
+		return new InstructorResponce(HttpStatus.ACCEPTED.value(),"تم التعديل بنجاح",System.currentTimeMillis());
 	}
 	
 	

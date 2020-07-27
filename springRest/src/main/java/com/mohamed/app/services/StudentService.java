@@ -42,4 +42,10 @@ public class StudentService implements StudentSeviceDep {
 		return studentDao.deleteStudent(studentId);
 	}
 
+	@Override
+	public InstructorResponce updateStudent(Integer studentId, Student student) {
+		// TODO Auto-generated method stub
+		return studentDao.updateStudent(studentId, student);
+	}
+
 }

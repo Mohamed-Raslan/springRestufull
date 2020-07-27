@@ -50,5 +50,10 @@ public class StudentController {
 		
 	}
 	
-	
+	@RequestMapping(value = "/student/{studentId}" , method = RequestMethod.PUT)
+	public InstructorResponce updateStudent(@PathVariable Integer studentId ,@RequestBody Student student ) {
+		
+		return studentService.updateStudent(studentId, student);
+		
+	}
 }
