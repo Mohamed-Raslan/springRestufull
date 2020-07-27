@@ -43,7 +43,12 @@ public class StudentController {
 		return studentService.getStudentFromCourse(courseId);
 	}
 	
-	
+	@RequestMapping(value = "/student/{studentId}" , method = RequestMethod.DELETE)
+	public InstructorResponce deleteStudent(@PathVariable Integer studentId) {
+		
+		return studentService.deleteStudent(studentId);
+		
+	}
 	
 	
 }

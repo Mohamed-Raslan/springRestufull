@@ -10,6 +10,7 @@ public interface StudentSeviceDep {
 	InstructorResponce addStudent(Integer courseId,Student student);
 	List<Student>      getStudentFromCourse(Integer courseId);
 	List<Student>      getAllStudent();
+	InstructorResponce deleteStudent(Integer studentId);
 
 
 }

@@ -66,11 +66,23 @@ public class StudentDao implements StudentDaoDep {
 		return allStudent;
 		
 	}
-	
-	
-	
-	
 
+	@Override
+	public InstructorResponce deleteStudent(Integer studentId) {
+		// TODO Auto-generated method stub
+		if (studentId == null)
+			throw new StudentNotFound("لابد من ادخال الرقم الخاص بالطالب");
+
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		// delete object with primary key
+		Query theQuery = currentSession.createQuery("delete from Student where studentId=:studentId");
+		theQuery.setParameter("studentId", studentId);
+	    theQuery.executeUpdate();
+		return new InstructorResponce(HttpStatus.ACCEPTED.value(), "تم الحذف بنجاح", System.currentTimeMillis());
+
+	}
+	
 	
 
 }
