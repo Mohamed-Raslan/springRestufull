@@ -2,7 +2,9 @@ package com.mohamed.app.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -41,13 +43,13 @@ public class Instructor implements Serializable  {
 	@OneToMany(mappedBy = "ins" ,fetch = FetchType.EAGER , 
 			 cascade = {CascadeType.MERGE , CascadeType.REFRESH ,
 				        CascadeType.DETACH, CascadeType.PERSIST})
-	private List<Courses> courses;
+	private Set<Courses> courses;
 
-	public List<Courses> getCourses() {
+	public Set<Courses> getCourses() {
 		return courses;
 	}
 
-	public void setCourses(List<Courses> courses) {
+	public void setCourses(Set<Courses> courses) {
 		this.courses = courses;
 	}
 
@@ -100,7 +102,7 @@ public class Instructor implements Serializable  {
 	
 	public void addCourse(Courses course) {
 		if(courses==null)
-			courses = new ArrayList<Courses>();
+			courses = new HashSet<Courses>();
 		
 		courses.add(course);
 		course.setIns(this);

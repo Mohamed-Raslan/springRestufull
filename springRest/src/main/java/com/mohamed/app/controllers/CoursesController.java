@@ -1,5 +1,7 @@
 package com.mohamed.app.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,5 +29,23 @@ public class CoursesController {
 		return courseService.addCourse(courses, instructorId);
 		
 	}
+	
+	@RequestMapping(value = "/courses/{instructorId}" , method = RequestMethod.GET)
+	public List<Courses> getCourses(@PathVariable int instructorId) {
+		return courseService.getCourses(instructorId);
+	}
 
+	@RequestMapping(value = "/courses" , method = RequestMethod.GET)
+	public List<Courses> getAllCourses() {
+		return courseService.getAllCourses();
+	}
+	
+	
+	@RequestMapping(value = "/courses/{courseId}" , method = RequestMethod.DELETE)
+	public InstructorResponce deleteCourse(@PathVariable Integer courseId) {
+		
+		return courseService.deleteCourse(courseId);
+		
+	}
+	
 }
