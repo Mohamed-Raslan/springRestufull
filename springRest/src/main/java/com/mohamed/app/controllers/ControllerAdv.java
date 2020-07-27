@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.mohamed.app.exceptions.StudentNotFound;
 import com.mohamed.app.response.CustomerResponse;
+import com.mohamed.app.response.InstructorResponce;
 
 @ControllerAdvice
 public class ControllerAdv {
@@ -24,15 +25,28 @@ public class ControllerAdv {
 
 	}
 	
+//	@ExceptionHandler
+//	public ResponseEntity<CustomerResponse> atherExc(Exception exc) {
+//
+//		CustomerResponse error = new CustomerResponse();
+//		error.setState(HttpStatus.BAD_REQUEST.value());
+//		error.setMessage(exc.getMessage());
+//		error.setTimeStamp(System.currentTimeMillis());
+//
+//		return new ResponseEntity<CustomerResponse>(error, HttpStatus.BAD_REQUEST);
+//
+//	}
+	
 	@ExceptionHandler
-	public ResponseEntity<CustomerResponse> atherExc(Exception exc) {
+	public ResponseEntity<InstructorResponce> insExc(Exception exc) {
 
-		CustomerResponse error = new CustomerResponse();
+		InstructorResponce error = new InstructorResponce();
 		error.setState(HttpStatus.BAD_REQUEST.value());
 		error.setMessage(exc.getMessage());
 		error.setTimeStamp(System.currentTimeMillis());
 
-		return new ResponseEntity<CustomerResponse>(error, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<InstructorResponce>(error, HttpStatus.BAD_REQUEST);
 
 	}
+	
 }

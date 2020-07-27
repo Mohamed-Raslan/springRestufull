@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/mohamed/app/dao/CourseDao.java=UTF-8
 encoding//src/main/java/com/mohamed/app/dao/CustomerDao.java=UTF-8
+encoding//src/main/java/com/mohamed/app/dao/InstructorDao.java=UTF-8
