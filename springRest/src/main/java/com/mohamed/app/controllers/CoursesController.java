@@ -23,6 +23,13 @@ public class CoursesController {
 	@Qualifier("courseService")
 	private CourseServiceDep courseService;
 	
+	
+	@RequestMapping(value = "/courses" , method = RequestMethod.GET)
+	public List<Courses> getAllCourses() {
+		return courseService.getAllCourses();
+	}
+	
+	
 	@RequestMapping(value = "/courses/{instructorId}" , method = RequestMethod.POST)
 	public InstructorResponce addCourse(@PathVariable int instructorId ,@RequestBody Courses courses) {
 		
@@ -35,10 +42,7 @@ public class CoursesController {
 		return courseService.getCourses(instructorId);
 	}
 
-	@RequestMapping(value = "/courses" , method = RequestMethod.GET)
-	public List<Courses> getAllCourses() {
-		return courseService.getAllCourses();
-	}
+	
 	
 	
 	@RequestMapping(value = "/courses/{courseId}" , method = RequestMethod.DELETE)
